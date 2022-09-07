@@ -1,0 +1,146 @@
+   1  sudo apt-get update
+    2  sudo apt-get install     ca-certificates     curl     gnupg     lsb-release
+    3  sudo mkdir -p /etc/apt/keyrings
+    4  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    5  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    6    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    7  sudo apt-get update
+    8  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    9  apt-cache madison docker-ce
+   10  sudo apt-get install docker-ce=<> docker-ce-cli=<5:20.10.17~3-0~ubuntu-jammy> containerd.io docker-compose-plugin 
+   11  sudo apt-get install docker-ce=<5:20.10.17~3-0~ubuntu-jammy> docker-ce-cli=<5:20.10.17~3-0~ubuntu-jammy> containerd.io docker-compose-plugin
+   12  sudo apt-get install docker-ce=<docker-ce | 5:20.10.17~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages> docker-ce-cli=<docker-ce | 5:20.10.17~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages> containerd.io docker-compose-plugin
+   13  sudo apt-get install docker-ce=<V5:20.10.16~3-0~ubuntu-jammy> docker-ce-cli=<5:20.10.16~3-0~ubuntu-jammy> containerd.io docker-compose-plugin
+   14  ls
+   15  sudo service docker start
+   16  sudo docker run hello-world
+   17  sudo apt-get update
+   18  docker ps
+   19  clear
+   20  sudo docker run busybox echo "Hello world"
+   21  sudo docker run hello-world
+   22  docker ps
+   23  sudo docker ps
+   24  sudo usermod -a -G docker $USER
+   25  sudo docker ps
+   26  docker ps
+   27  sudo docker run hello-world
+   28  mkdir
+   29  sudo mkdir Docker
+   30  cd Docker/
+   31  ls
+   32  sudo vi app.js
+   33  sudo vi app.jsls
+   34  ls
+   35  rm .
+   36  sudo rm *
+   37  ls
+   38  nano app.js
+   39  ls
+   40  sudo nano app.js
+   41  sudo systemctlstatus docker
+   42  sudo systemctl status docker
+   43  clear
+   44  sudo nano Dockerfile
+   45  ls
+   46  cat Dockerfile 
+   47  cat app.js 
+   48  clear
+   49  sudo docker build -t kubia .
+   50  sudo docker images
+   51  sudo docker run --name kubia-container -p 8080:8080 -d kubia
+   52  sudo curl localhost:8080
+   53  sudo curl http://localhost:8080
+   54  sudo curl http//:localhost:8080
+   55  sudo curl localhost:8080
+   56  cat app.js 
+   57  ls
+   58  cat app.js
+   59  sudo nano app.js 
+   60  sudo docker build -t kubia .
+   61  sudo docker run --name kubia-container -p 8080:8080 -d kubia
+   62  sudo curl localhost:8080
+   63  sudo docker run --name kubia-container -p 8080:8080 -d new_kubia
+   64  sudo docker run --name new_kubia-container -p 8080:8080 -d kubia
+   65  sudo curl localhost:8080
+   66  cat Dockerfile 
+   67  cat app.js 
+   68  sudo nano app.js 
+   69  sudo docker build -t kubia .
+   70  sudo docker run --name last_kubia-container -p 8080:8080 -d kubia
+   71  sudo curl localhost:8080
+   72  sudo docker images
+   73  sudo docker rmi fc3b581df027
+   74* sudo docker stop 
+   75  sudo docker -ps
+   76  sudo docker ps
+   77  sudo docker ps -a
+   78  sudo curl localhost:8080
+   79  sudo docker ps 
+   80  sudo docker inspect last_kubia-container
+   81  sudo docker exec -it last_kubia-container bash
+   82  sudo docker stop new_kubia-container
+   83  sudo docker stop kubia-container
+   84  sudo docker ps 
+   85  sudo docker ps -a
+   86  sudo docker rmi kubia-container
+   87  sudo docker ps -a
+   88  sudo docker ps 
+   89  sudo docker tag kubia kt28/kubia
+   90  sudo docker images | head
+   91  sudo docker tag kubia tukaramrathod02/kubia
+   92  sudo docker images | head
+   93  sudo docker login
+   94  sudo docker push tukaramrathod02/kubia
+   95  sudo docker run -p 8080:8081 -d tukaramrathod02/kubia
+   96  sudo docker run -p 3000:3000 -d tukaramrathod02/kubia
+   97  clear
+   98  cd ..
+   99  ls
+  100  sudo mkdir kubernetes
+  101  cd kubernetes/
+  102  ls
+  103  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  104  curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  105  ~curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  106  curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  107  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+  108  sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  109  sudo curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  110  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+  111  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  112  kubectl version --client~
+  113  sudo kubectl version --client~
+  114  kubectl version --client --output=yaml
+  115  sudo apt-get update
+  116  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  117  sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  118  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  119  minikube start
+  120  sudo minikube start
+  121  history
+  
+  
+  
+  
+  
+  
+  
+App.js
+const http = require('http');
+const os = require('os');
+console.log("Bullya server starting...");
+var handler = function(request, response) {
+        console.log("Received request from " + request.connection.remoteAddress);
+        response.writeHead(200);
+        response.end("You've hit" + os.hostname() + "\n");
+};
+var www = http.createServer(handler);
+www.listen(8080);
+
+
+Dockerfile
+FROM node:7
+ADD app.js /app.js
+ENTRYPOINT ["node", "app.js"]
+  
